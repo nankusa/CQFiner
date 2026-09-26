@@ -1,0 +1,82 @@
+inherits:
+- model.yaml
+experiment:
+  name: cqfiner
+  group: main
+  description: CQFiner main paper configuration.
+  tags:
+  - residue
+  - visnet
+  - egnn
+  - dfl
+  seed: 42
+runtime:
+  accelerator: gpu
+  devices: 2
+  strategy: ddp_find_unused_parameters_true
+  precision: 16-mixed
+  max_epochs: 60
+  log_every_n_steps: 10
+  test_every_n_epoch: 0
+  output_dir: lightning_logs/cqfiner
+  accumulate_grad_batches: 1
+  monitor_gpu_memory: false
+loss:
+  balance: progressive
+  site_detection: 1.0
+  query_distance: progressive
+  query_disp: progressive
+  query_contrastive: 0.0
+eval:
+  metric_threshold: 4.0
+  rank_based: true
+  query_inference:
+    mode: rollout
+    num_query_nodes: 200
+    nms_radius: 6.0
+    cache_positions: false
+    use_offset_for_center: true
+  site_dcc:
+    prob_threshold: 0.3
+    cluster_eps: 15.0
+    cluster_method: average
+    cluster_min_samples: 5
+    cluster_quantile: 0.3
+    score_aggregation: square
+    centroid_type: hull
+    host_prob_aggregation: score_max
+optimizer:
+  name: adamw
+  lr: 0.0002
+  weight_decay: 0.0
+  betas:
+  - 0.9
+  - 0.95
+  momentum: 0.9
+  patterns: []
+  scheduler:
+    name: reduce_on_plateau
+    monitor: val/loss
+    mode: min
+    factor: 0.8
+    patience: 10
+    min_lr: 1.0e-06
+    t_max: 200
+    eta_min: 1.0e-06
+data:
+  root: data
+  dataset: unisite
+  split: unisite_0p9
+  input_dir: protein_ligand
+  target: pocket
+  protein_graph: residue
+  batch_size: 8
+  num_workers: 16
+  pin_memory: true
+  test_sets:
+  - name: coach420
+    dataset: coach420
+    split: coach420
+  - name: holo4k
+    dataset: holo4k
+    split: holo4k

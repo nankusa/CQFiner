@@ -1,0 +1,12 @@
+{
+  "file": "cqfiner.pt",
+  "sha256": "e92d50bb6e8f537817368587390b0bee23058dbc28ab3f569a6fabaf58d8bd65",
+  "source_checkpoint_sha256": "ddce3ebe9514f774373157542cd94a2a3b2a5e1fe8a4e79593764399fa3a717d",
+  "selected_epoch": 17,
+  "global_step": 9775,
+  "selection_metric": "UniSite validation AP at IoU 0.5",
+  "tensor_count": 230,
+  "tensor_elements": 2311806,
+  "weight_equivalence": "Every exported tensor is exactly equal to the selected checkpoint.",
+  "training_resume": "Inference weights only; optimizer, scheduler and training-loop states excluded."
+}

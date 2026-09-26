@@ -1,0 +1,70 @@
+{
+  "atol": 1e-05,
+  "passed": false,
+  "metrics": [
+    {
+      "dataset": "coach420",
+      "metric": "ap_0.3",
+      "expected": 0.8157647848129272,
+      "measured": 0.8157865405082703,
+      "absolute_error": 2.1755695343017578e-05,
+      "passed": false
+    },
+    {
+      "dataset": "coach420",
+      "metric": "ap_0.5",
+      "expected": 0.6337651610374451,
+      "measured": 0.6327997446060181,
+      "absolute_error": 0.000965416431427002,
+      "passed": false
+    },
+    {
+      "dataset": "coach420",
+      "metric": "dcc_4",
+      "expected": 0.7351190447807312,
+      "measured": 0.738095223903656,
+      "absolute_error": 0.0029761791229248047,
+      "passed": false
+    },
+    {
+      "dataset": "coach420",
+      "metric": "dca_4",
+      "expected": 0.8601190447807312,
+      "measured": 0.863095223903656,
+      "absolute_error": 0.0029761791229248047,
+      "passed": false
+    },
+    {
+      "dataset": "holo4k",
+      "metric": "ap_0.3",
+      "expected": 0.8053843975067139,
+      "measured": 0.805209755897522,
+      "absolute_error": 0.00017464160919189453,
+      "passed": false
+    },
+    {
+      "dataset": "holo4k",
+      "metric": "ap_0.5",
+      "expected": 0.6396865844726562,
+      "measured": 0.6385785937309265,
+      "absolute_error": 0.0011079907417297363,
+      "passed": false
+    },
+    {
+      "dataset": "holo4k",
+      "metric": "dcc_4",
+      "expected": 0.7667761445045471,
+      "measured": 0.7667761445045471,
+      "absolute_error": 0.0,
+      "passed": true
+    },
+    {
+      "dataset": "holo4k",
+      "metric": "dca_4",
+      "expected": 0.8770530223846436,
+      "measured": 0.8770530223846436,
+      "absolute_error": 0.0,
+      "passed": true
+    }
+  ]
+}

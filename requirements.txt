@@ -1,0 +1,18 @@
+--index-url https://mirrors.cloud.tencent.com/pypi/simple/
+--find-links https://data.pyg.org/whl/torch-2.6.0+cu124.html
+numpy==1.26.4
+scipy==1.17.1
+pandas==3.0.1
+biopython==1.87
+rdkit==2025.9.6
+lightning==2.5.0
+pytorch-lightning==2.6.1
+torchmetrics==1.9.0
+torch-geometric==2.6.1
+torch-cluster==1.6.3+pt26cu124
+torch-scatter==2.1.2+pt26cu124
+scikit-learn==1.8.0
+PyYAML==6.0.3
+click==8.3.1
+tensorboard==2.20.0
+tqdm==4.67.3

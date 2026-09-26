@@ -1,0 +1,26 @@
+{
+  "reason": "Remove samples with unusable empty binding-site labels before rebuilding pockets and graphs.",
+  "removed_holo4k_samples": [
+    "1lmcA",
+    "1lspA",
+    "1tioA",
+    "2bguA"
+  ],
+  "removed_unisite_empty_mask_samples": [
+    "A9CIT6",
+    "B0TZW0",
+    "F1NHE9",
+    "M1VAN7",
+    "O34508",
+    "P0A881",
+    "P17900",
+    "P62157",
+    "P94678",
+    "Q08188",
+    "Q1QZT7",
+    "Q9DC23",
+    "Q9TVF0",
+    "Q9WXM1"
+  ],
+  "unisite_empty_mask_definition": "At least one ligand site has no surface protein atom within 4.0 Angstrom."
+}

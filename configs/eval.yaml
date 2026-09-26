@@ -1,0 +1,31 @@
+run_config: configs/train.yaml
+checkpoint: weights/cqfiner.pt
+seed: 42
+output:
+  save_dir: .
+  name: lightning_logs/evaluation
+  version: main
+  default_hp_metric: false
+trainer:
+  accelerator: gpu
+  devices: 1
+  strategy: auto
+  precision: 16-mixed
+  enable_progress_bar: true
+  enable_model_summary: false
+data:
+  batch_size: 8
+  num_workers: 16
+  pin_memory: true
+flow:
+  eval_num_query_nodes: 200
+minimal_prediction: true
+site_eval:
+  enabled: true
+test_datasets:
+- name: coach420
+  dataset_name: coach420
+  split_tag: coach420
+- name: holo4k
+  dataset_name: holo4k
+  split_tag: holo4k

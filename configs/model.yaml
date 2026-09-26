@@ -1,0 +1,80 @@
+features:
+  host_feature: esm
+  embedding_modalities:
+  - esm
+  input_dim: 1280
+  plm:
+    enabled: true
+    model: esm
+    frozen: true
+graph:
+  host_host_cutoff: 10.0
+  host_query_cutoff: 10.0
+  max_neighbors: 256
+  interaction:
+    mode: cutoff
+    host_to_query: true
+    query_to_host: false
+    query_to_query: false
+model:
+  query:
+    num_nodes: 200
+    eval_num_nodes: 200
+    offset_prediction: true
+    surface_min_offset: 1.5
+    surface_max_offset: 4.0
+    surface_tangent_jitter: 0.5
+    surface_normal_neighbors: 16
+    displacement_supervision_cutoff: 10.0
+    train_forward_passes: 1
+    displacement_head_aggregation: mean
+  query_ranking:
+    type: distance_distribution
+    distance_bin_size: 0.5
+    distance_num_bins: 49
+    nms_radius: 6.0
+  residue_mask:
+    head: vn_dot
+    distance_gate: true
+    distance_cutoff: 30.0
+    adaptive_rbf_min_radius: 2.0
+    adaptive_rbf_max_radius: 30.0
+    adaptive_rbf_init_radius: 12.0
+    mask_threshold: 0.5
+    nms_radius: 7.0
+    grouping: nms
+    query_score_threshold: 0.4
+    score_aggregation: top1
+    projection_dim: null
+    dropout: 0.1
+  backbone:
+    name: visnet
+    hidden_dim: 128
+    num_layers: 6
+    interaction_num_layers: 6
+    scalar_vector_output_head: none
+    scalar_vector_output_activation: silu
+    scalar_vector_output_residual: true
+    num_atom_types: 5
+    num_residue_types: 21
+    visnet:
+      n_rbf: 64
+      num_heads: 8
+      lmax: 2
+      trainable_rbf: false
+      vecnorm_type: max_min
+      trainable_vecnorm: false
+      node_aggr: sum
+    egnn:
+      node_aggr: mean
+      dropout: 0.1
+      norm_feats: true
+      norm_coords: true
+      norm_coors_scale_init: 0.01
+  query_refiner:
+    enabled: true
+    num_layers: 3
+    cutoff: 10.0
+    max_neighbors: 32
+    dropout: 0.1
+    loss_weight: 1.0
